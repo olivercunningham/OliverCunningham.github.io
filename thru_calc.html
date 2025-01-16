@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Assembly Line Throughput Predictor</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Overview</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Overview</a></li>
+							<li class="active"><a href="thru_calc.html">Throughput Predictor</a></li>
+							<li><a href="maint_dash.html">Maintenance Dashboard</a></li>
+							<li><a href="ict.html">ICT Downtime</a></li>
+							<!-- <li><a href="about.html">About Me</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/oliver-cunningham/" target="_blank" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="mailto:olc770@mun.ca" target="_blank" class="fa fa-envelope"><span class="label"></span></a></li>
+
+							<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Assembly Line Throughput Predictor</h1> 
+									<p>Project Goal: Reduce the time required to generate quotes for new orders at an electronics manufacturing plant.</p>
+								</header>
+								<!-- <div class="image main"><img src="images/gBoost.png" alt="" /></div> -->
+								<style>
+									img {
+									  display: block;
+									  margin-left: auto;
+									  margin-right: auto;
+									}
+									</style>
+								 <img src="images/gBoost.png" alt="Boost" style="width:80%"/>.
+								<h2>Background</h2>
+								<p>Quotes are generated to bid on contracts, however the process for generating quotes is labour and time intensive and consequently many potential contracts are lost due to an inability to produce timeley quotes.
+									The quoting process consisted of loading the product's Bill of Materials (BOM) into a software program that optimizes the assembly line configuration to minimize the largest cycle time of the four placement machines (the bottleneck).
+									The bottleneck is then used to calculate the throughput in boards per hour (BPH) which is then used to generate a quote, along with labour and material costs.</p>
+								<p>The assembly line configuration is shown below and consists of a stencil printer that applies solder paste to the boards, four placement machines which place components onto the boards, and a reflow oven which heats the solder to to fix components in place.</p>
+								<div class="image main"><img src="images/SMTline.png" alt="" /></div>
+								<h2>
+									Initialization
+								</h2>
+								<p>The objective of this project was to create a algorithm that can predict the bottleneck time of a new product to replace or supplement the exisiting time-intensive process of generating quotes. The existing process is visualized below.</p>
+								<div class="image main"><img src="images/CurrentProcess.png" alt="" /></div>
+								<h2>
+									Solution
+								</h2>
+								<p>Placement machines log files were parsed to obtain the cycle times of previous orders.
+									These cycle times were observed in relation to certain product charactaristics such as the number of components and board size, since larger boards with more components generally have larger cycle times.</p>
+								<p>A gradient-boosted decision tree algorithm was used in Python to predict cycle times based on several features.
+									The algorthim was deployed on the company's data hub website to make it accessible to workers.</p>
+								<p>To generate a predction for a product's cycle times, a user uploads csv files of the product's BOM and the latest revision of a component matrix, which contains data on each component.
+									After a few seconds, the program calculates the cycle times, and therefore the bottleneck, and displays the number of boards that would be produced in an hour.
+									The screenshot below shows the program outputting a BPH prediction.</p>
+									<img src="images/SMTQoteTool.png" alt="Boost" width="800"/>.
+								<p>The algorithm was able to make slightly less accurate predictions than the exsiting process, however it took less than a minute compared to the 6+ hours.
+									This allowed the company produce quotes quickly when backlogged with numerous quote requests.</p>
+								</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<section>
+						<h3>Contact</h3>
+						<!-- <p><a href="#"></a></p> -->
+						<ul class="fa icons">
+							<li><a href="mailto:olc770@mun.ca" target="_blank"> <i class="fa fa-envelope fa-2x"></i></a></li>
+							<!-- <li><a href="https://www.linkedin.com/in/oliver-cunningham/"><i class="fa icon brands fa-linkedin"></i></a></li> -->
+
+					</section>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

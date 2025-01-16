@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Maintenance Dashboard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Overview</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Overview</a></li>
+							<li><a href="thru_calc.html">Throughput Predictor</a></li>
+							<li class="active"><a href="maint_dash.html">Maintenance Dashboard</a></li>
+							<li><a href="ict.html">ICT Downtime</a></li>
+							<!-- <li><a href="about.html">About Me</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/oliver-cunningham/" target="_blank" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="mailto:olc770@mun.ca" target="_blank" class="fa fa-envelope"><span class="label"></span></a></li>
+							<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li> -->
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Maintenance Dashboard</h1> 
+									<p>Project Goal: Automate the creation and distribution of weekly maintenance reports and expand reports to include forecasts for the upcoming week.</p>
+								</header>
+								<!-- <div class="image main"><img src="images/gBoost.png" alt="" /></div> -->
+								<style>
+									img {
+									  display: block;
+									  margin-left: auto;
+									  margin-right: auto;
+									}
+									</style>
+								 <img src="images/gears.jpeg" alt="Gears" style="width:80%"/>.
+								<h2>Background</h2>
+								<p>Reports containing information about open work orders were required to be generated on a weekly basis and emailed to the maintenance department management.
+									The process involved navigating the compnay's Enterprise Asset Management (EAM) system to download spreadsheets containing data on work orders for the previous week.
+									Charts would then be generated in Excel and subsequently be pasted into an email that would be sent to the maintenance department management.
+									
+								</p>
+								<!-- <div class="image main"><img src="images/SMTline.png" alt="" /></div> -->
+								<h2>Initialization</h2>
+								<p>The objective of this project was to automate the process of generating weekly maintenance reports and dsitributing them to relevant persons.
+									Additionally, the project aimed to expand the reports' content by including labour forecasts for the upcomoming week.</p>
+								<h2>Current State</h2>
+								<p>The maintenance reports contain charts showing the number of currently overdue work orders for each mechanic and the total number of work orders each mechanic was assigned the previous week.
+									A sample of each chart can be seen below.</p>
+								<div class="row" ><img src="images/md_overdue_pms.png" style="width:50%" /> <img src="images/md_laboursc.png" style="width:50%" /> </div>
+								<br>
+								<p>The image on the left shows the number of overdue work orders in orange compared to the number of completed work orders in blue, with each bar representing a mechanic.
+									The image on the right shows the total number of work order hours each mechanic completed the previous week.
+									It is desirable for each mechanic to have completed 40 hours of work orders each week.</p>
+								<h2>Solution</h2>
+								<p>A program was created in Python that collects, uploads, and visualizes the data in less than a minute.</p>
+								<h3>Data Collection</h3>
+								<p>The program headlessly navigates the EAM system and downloads the csv files, or "scorecards", containing the required data for the current week's report and saves them to a specified directory the user's computer.
+									Next, the directory is scanned for csv files from the previous week. The previous week's and current week's scorecards are concatenated in a pandas dataframe and saved as a new csv to create a running scorecard of current and past weeks.
+								</p>
+								<h3>Data Upload</h3>
+								<p>The running scorecard is uploaded to a directory on the company's SharePoint website and replaces the previous scorecard to ensure the most recent data is available, along with historical data.</p>
+								<h3>Data Visualization</h3>
+								<p>A dashboard was created in Power BI on the company's SharePoint website, lnked to the running scorecard, to serve as the new hub for maintenance report data.
+									Both previous charts were replicated with the addition of a new chart that shows the assigned hours of work orders for each mechanic for the upcoming week.
+									This allows management to see which mechanics are best suited to be assigned new work orders as they arise.
+									A screenshot of the GUI and the dashboard is shown below.</p>
+								<!-- <img src="images/md_dashboard_cropped.jpg" alt="db" style="width:80%"/> -->
+								<div style="display: flex; justify-content: space-between;"><img src="images/md_gui.png" /><img src="images/md_dashboard_cropped.jpg" width="75%" /></div>
+								<br>
+								<p>The user enters SharePoint and EAM credentials into the program window (left) and the dashboard (right) is updated in less than a minute.</p>
+								<h2>Conclusion</h2>
+								<p style="margin-bottom: 10px;">The dashboard made the following improvements on the existing process:</p>
+								<ul>
+									<li>Reduced the time required and potential for human error when generating reports</li>
+									<li>Added labour forecast to increase visibility of labour allocation</li>
+									<li>All data is contained within the dashboard with data slicer -- eliminated the need of sifting through emails to find reports for previous weeks</li>
+								</ul>
+								</section>
+
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<section>
+						<h3>Contact</h3>
+						<!-- <p><a href="#"></a></p> -->
+						<ul class="fa icons">
+							<li><a href="mailto:olc770@mun.ca" target="_blank"> <i class="fa fa-envelope fa-2x"></i></a></li>
+							<!-- <li><a href="https://www.linkedin.com/in/oliver-cunningham/"><i class="fa icon brands fa-linkedin"></i></a></li> -->
+
+					</section>
+				</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
